@@ -1,4 +1,4 @@
-package io.loopcamp.utility;
+package io.loop.utils;
 
 import java.sql.*;
 import java.util.*;

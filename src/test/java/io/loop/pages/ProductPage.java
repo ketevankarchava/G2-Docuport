@@ -1,12 +1,9 @@
 package io.loop.pages;
 
-import io.loop.utils.BrowserUtils;
-import io.loop.utils.Driver;
 import io.loop.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 
 
 public class ProductPage {

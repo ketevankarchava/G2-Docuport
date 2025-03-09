@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertTrue;
 
 
-
 public class BrowserUtils {
     private static final Logger LOG = LogManager.getLogger();
     public static Scenario myScenario;
@@ -250,8 +249,8 @@ public class BrowserUtils {
     }
 
 
-    public static java.util.List<String> getElementsText(java.util.List<WebElement> elements) {
-        java.util.List<String> elementsText = new ArrayList<>();
+    public static List<String> getElementsText(List<WebElement> elements) {
+        List<String> elementsText = new ArrayList<>();
         for (WebElement element : elements) {
             elementsText.add(element.getText());
         }
@@ -264,7 +263,7 @@ public class BrowserUtils {
                 .collect(Collectors.toList());
     }
 
-    public static java.util.List<String> getElementsTextWithStream2(List<WebElement> elements) {
+    public static List<String> getElementsTextWithStream2(List<WebElement> elements) {
         return elements.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
