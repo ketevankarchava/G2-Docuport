@@ -13,4 +13,8 @@ public class HomePage {
 
     @FindBy(xpath = "//h2[contains(text(),'Received')]")
     public WebElement receivedDocs;
+    @FindBy(xpath = "//span[contains(text(),'Clients')]")
+    public WebElement clients;
+    @FindBy(xpath = "//span[contains(text(),'Users')]")
+    public WebElement users;
 }
