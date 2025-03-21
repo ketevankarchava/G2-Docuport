@@ -1,4 +1,7 @@
-21.03.2025 01:07:06 INFO  DocuportStepDefs:32 - user enters username
-21.03.2025 01:07:06 INFO  DocuportStepDefs:37 - user clicks login button
-21.03.2025 01:07:06 INFO  DocuportStepDefs:47 - Home page is successfully displayed
-21.03.2025 01:07:06 INFO  Hook:31 - ....................END AUTOMATION...............LOOPCAMP
+21.03.2025 13:30:00 INFO  DocuportStepDefs:42 - user clicks login button
+21.03.2025 13:30:01 INFO  DocuportStepDefs:53 - Home page is successfully displayed
+21.03.2025 13:30:01 INFO  Hook:31 - ....................END AUTOMATION...............LOOPCAMP
+21.03.2025 13:30:01 INFO  Hook:21 - ....................START AUTOMATION...............LOOPCAMP
+21.03.2025 13:30:01 INFO  DocuportStepDefs:60 - user clicks batch1group1 button
+21.03.2025 13:30:01 INFO  DocuportStepDefs:66 - user clicks logout button
+21.03.2025 13:30:01 INFO  Hook:31 - ....................END AUTOMATION...............LOOPCAMP
