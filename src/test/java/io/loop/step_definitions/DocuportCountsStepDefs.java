@@ -28,7 +28,7 @@ public class DocuportCountsStepDefs {
     @Given("the {string} on the home page")
     public void the_on_the_home_page(String string) {
         Driver.getDriver().get(ConfigurationReader.getProperties("docuportUiUrl"));
-        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.EXTRA_LARGE);
+        //BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.EXTRA_LARGE);
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
         loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
         loginPage.loginButton.click();

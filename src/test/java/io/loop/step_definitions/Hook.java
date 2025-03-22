@@ -30,7 +30,7 @@ public class Hook {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         LOG.info("....................END AUTOMATION...............LOOPCAMP");
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
     @AfterStep

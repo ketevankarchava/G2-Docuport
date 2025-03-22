@@ -62,6 +62,8 @@ public class DocuportStepDefs {
 
     @When("the user clicks the Logout button")
     public void the_user_clicks_the_logout_button() {
+        logoutPage.batch1Group1button.click();
+        LOG.info("user clicks batch1group1 button");
       logoutPage.logoutButton.click();
         LOG.info("user clicks logout button");
     }
