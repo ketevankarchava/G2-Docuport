@@ -74,4 +74,17 @@ public class DocuportStepDefs {
 
     }
 
+
+    @Then("the login page should be displayed with username and password fields")
+    public void the_login_page_should_be_displayed_with_username_and_password_fields() {
+
+        assertTrue("Username Box DOES NOT displayed",loginPage.usernameInput.isDisplayed());
+        assertTrue("Password Box DOES NOT displayed",loginPage.passwordInput.isDisplayed());
+    }
+    @Then("the \"\"Login\"\" button should be visible\"")
+    public void the_login_button_should_be_visible() {
+        assertTrue("Login button is not visible",loginPage.loginButton.isDisplayed());
+
+    }
+
 }
