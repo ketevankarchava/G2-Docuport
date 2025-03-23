@@ -4,13 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.loop.pages.*;
+import io.loop.pages.ClientsPage;
+import io.loop.pages.HomePage;
+import io.loop.pages.LoginPage;
+import io.loop.pages.UserPage;
 import io.loop.utils.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,7 +20,6 @@ public class DocuportCountsStepDefs {
     ClientsPage clientsPage = new ClientsPage();
     UserPage userPage = new UserPage();
     HomePage homePage = new HomePage();
-    LeftNavigatePage leftNavigatePage = new LeftNavigatePage();
     String returnPagination;
     String uiUserCount;
     private static final Logger LOG = LogManager.getLogger();
@@ -103,17 +102,6 @@ public class DocuportCountsStepDefs {
         LOG.info("returned from the DB: " + dbClientsCount + " returned from the UI: " + uiUserCount);
         DB_Utility.destroy();
 
-
-    }
-
-    @Then("user validate left navigate items")
-    public void user_validate_left_navigate_items(List<String> expectedLeftNav) {
-        List<String> actualLeftNav = new ArrayList<>();
-        for (int i = 0; i < leftNavigatePage.actualLeftNav.size(); i++) {
-            actualLeftNav.add(leftNavigatePage.actualLeftNav.get(i).getText());
-        }
-
-        assertEquals("Actual DOES NOT match expected",expectedLeftNav, actualLeftNav);
 
     }
 
