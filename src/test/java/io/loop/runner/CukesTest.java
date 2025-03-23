@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {//"pretty",
                 "html:target/html-reports/cucumber-report.html",
-                "json:target/json-reports/json-report.json",
+                "json:target/cucumber.json",
                 "rerun:target/rerun.txt",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         features = "src/test/resources/feature",
@@ -20,5 +20,5 @@ import org.junit.runner.RunWith;
 )
 
 
-public class CukesRunner{
+public class CukesTest {
 }

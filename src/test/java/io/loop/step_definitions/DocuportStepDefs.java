@@ -56,7 +56,7 @@ public class DocuportStepDefs {
 
     @Given("the user is logged in and on the home page")
     public void the_user_is_logged_in_and_on_the_home_page() {
-      logoutPage.batch1Group1button.click();
+        logoutPage.batch1Group1button.click();
         LOG.info("user clicks batch1group1 button");
     }
 
@@ -64,13 +64,13 @@ public class DocuportStepDefs {
     public void the_user_clicks_the_logout_button() {
         logoutPage.batch1Group1button.click();
         LOG.info("user clicks batch1group1 button");
-      logoutPage.logoutButton.click();
+        logoutPage.logoutButton.click();
         LOG.info("user clicks logout button");
     }
 
     @Then("the user should be redirected to the login page")
     public void the_user_should_be_redirected_to_the_login_page() {
-       assertTrue("User is not redirected to the login page", BrowserUtils.waitForVisibility(loginPage.usernameInput, 10).isDisplayed());
+        assertTrue("User is not redirected to the login page", BrowserUtils.waitForVisibility(loginPage.usernameInput, 10).isDisplayed());
 
     }
 

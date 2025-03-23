@@ -66,17 +66,17 @@ public class DocuportCountsStepDefs {
     }
     @And("the user clicks the search button")
     public void theUserClicksTheSearchButton() {
-    userPage.searchButton.click();
+        userPage.searchButton.click();
     }
 
     @And("the user clicks the all radio button")
     public void theUserClicksTheAllRadioButton() {
-    userPage.clickRadioButton("All");
+        userPage.clickRadioButton("All");
     }
 
     @And("the users clicks the filter search button")
     public void theUsersClicksTheFilterSearchButton() {
-      BrowserUtils.waitForClickable(userPage.searchFilterButton,3);
+        BrowserUtils.waitForClickable(userPage.searchFilterButton,3);
         userPage.searchFilterButton.click();
         BrowserUtils.justWait(2000);
         uiUserCount = userPage.pagination.getText().split(" ")[2];
@@ -116,6 +116,5 @@ public class DocuportCountsStepDefs {
         assertEquals("Actual DOES NOT match expected",expectedLeftNav, actualLeftNav);
 
     }
-
 
 }

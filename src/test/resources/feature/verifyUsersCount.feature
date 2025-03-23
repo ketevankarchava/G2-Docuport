@@ -1,6 +1,6 @@
 Feature: As a data consumer, I want UI user account to be in DB.
 
-  @SmokeTest @UI @DB @Users
+  @SmokeTest
   Scenario: verify UI total account for users matches the DB count
     Given the "advisor" on the home page
     And the user navigates to "users" on the "leftNavigation" bar

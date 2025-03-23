@@ -1,7 +1,6 @@
-@ayaz
 Feature: Docuport Smoke Test Feature
 
-  @SmokeTest @ui
+  @SmokeTest
   Scenario: Login as an advisor
     When user is on Docuport Login Page
     And the user enters username "username" and password "password"
