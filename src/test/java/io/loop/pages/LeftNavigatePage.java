@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class LeftNavigatePage {
 
 
@@ -35,9 +33,6 @@ public class LeftNavigatePage {
 
     @FindBy(xpath = "//span[contains(text(),'Clients')]")
     public WebElement clientsButton;
-
-    @FindBy(xpath ="//div[@role='listbox']//a")
-    public List<WebElement> actualLeftNav;
 
     public void clickButton(String button){
         switch (button.toLowerCase().trim()){
