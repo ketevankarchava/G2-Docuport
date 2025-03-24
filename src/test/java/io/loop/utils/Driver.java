@@ -66,11 +66,11 @@ public class Driver {
 
                 case "headless":
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--headless=new");               // Modern headless mode for Chrome 109+
-                    options.addArguments("--no-sandbox");                 // Critical for EC2/root user
-                    options.addArguments("--disable-dev-shm-usage");      // Helps prevent memory issues in Docker/VMs
-                    options.addArguments("--disable-gpu");                // Optional but helps stability
-                    options.addArguments("--window-size=1920,1080");      // Good for consistent rendering
+                    options.addArguments("--headless=new");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--disable-gpu");
+                    options.addArguments("--window-size=1920,1080");
 
                     driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
