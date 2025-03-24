@@ -11,10 +11,10 @@ import org.junit.runner.RunWith;
                     //"pretty",
                     "rerun:target/rerun.txt",
                     "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-        features = "C:/Users/KETO/IdeaProjects/cucumber-project-b4/src/test/resources/features",
+        features = "C:/Users/Windows User/IdeaProjects/G2-Docuport/src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@sampleDocuport",
+        tags = "@SmokeTest",
         monochrome = true,
         publish = false
 )
