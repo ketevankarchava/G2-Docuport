@@ -20,38 +20,45 @@
         <plugins>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/CukesRunner.java</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <version>3.0.0-M5</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>integration-test</goal>-->
+<!--                            <goal>verify</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <includes>-->
+<!--                                <include>**/CukesTest.java</include>-->
+<!--                            </includes>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
-                <configuration>
-                    <includes>
-                        <include>**/CukesTest.java</include>
-                    </includes>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-tests</id>
+                        <phase>verify</phase> <!-- add this! -->
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/CukesTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
-
-
 
             <plugin>
                 <groupId>net.masterthought</groupId>
@@ -66,8 +73,7 @@
                         </goals>
                         <configuration>
                             <projectName>G2-Docuport</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
                             <jsonFiles>
                                 <param>${project.build.directory}/cucumber.json</param>
                             </jsonFiles>
@@ -75,6 +81,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
 
         </plugins>
     </build>
