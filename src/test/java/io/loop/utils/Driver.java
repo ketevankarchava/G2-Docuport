@@ -39,9 +39,16 @@ public class Driver {
             String browserType = ConfigurationReader.getProperties("browser");
             switch (browserType.toLowerCase()){
                 case "chrome":
-                    driverPool.set(new ChromeDriver());
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
+                    ChromeOptions chromeOptions = new ChromeOptions();
+
+//                    //chromeOptions.addArguments("--headless=new");
+//
+//                    chromeOptions.addArguments("--no-sandbox");
+//                    chromeOptions.addArguments("--disable-dev-shm-usage");
+//                    chromeOptions.addArguments("--disable-gpu");
+//                    chromeOptions.addArguments("--window-size=1920,1080");
+
+                    driverPool.set(new ChromeDriver(chromeOptions));
                     break;
 
                 case "firefox":
@@ -57,11 +64,16 @@ public class Driver {
                     break;
 
                 case "headless":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--headless");
-                    driverPool.set(new ChromeDriver(options));
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
+                    ChromeOptions headlessOptions = new ChromeOptions();
+
+                    headlessOptions.addArguments("--headless=new");
+
+                    headlessOptions.addArguments("--no-sandbox");
+                    headlessOptions.addArguments("--disable-dev-shm-usage");
+                    headlessOptions.addArguments("--disable-gpu");
+                    headlessOptions.addArguments("--window-size=1920,1080");
+
+                    driverPool.set(new ChromeDriver(headlessOptions));
                     break;
             }
         }

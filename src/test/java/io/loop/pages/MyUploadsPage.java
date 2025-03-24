@@ -1,5 +1,6 @@
 package io.loop.pages;
 
+import io.loop.utils.BrowserUtils;
 import io.loop.utils.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
