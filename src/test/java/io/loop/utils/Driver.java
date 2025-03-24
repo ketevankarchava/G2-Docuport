@@ -41,8 +41,7 @@ public class Driver {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
 
-                    //chromeOptions.addArguments("--headless=new");
-
+                    chromeOptions.addArguments("--headless=new");
 
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -66,7 +65,9 @@ public class Driver {
 
                 case "headless":
                     ChromeOptions headlessOptions = new ChromeOptions();
-                    //headlessOptions.addArguments("--headless=new");
+
+                    headlessOptions.addArguments("--headless=new");
+
                     headlessOptions.addArguments("--no-sandbox");
                     headlessOptions.addArguments("--disable-dev-shm-usage");
                     headlessOptions.addArguments("--disable-gpu");
