@@ -40,16 +40,15 @@ public class Driver {
             switch (browserType.toLowerCase()){
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
+
+                    chromeOptions.addArguments("--headless=new");
+
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.addArguments("--disable-gpu");
                     chromeOptions.addArguments("--window-size=1920,1080");
 
                     driverPool.set(new ChromeDriver(chromeOptions));
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(
-                            Duration.ofSeconds(Integer.parseInt(ConfigurationReader.getProperties("timeouts")))
-                    );
                     break;
 
                 case "firefox":
@@ -65,18 +64,14 @@ public class Driver {
                     break;
 
                 case "headless":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--headless=new");
-                    options.addArguments("--no-sandbox");
-                    options.addArguments("--disable-dev-shm-usage");
-                    options.addArguments("--disable-gpu");
-                    options.addArguments("--window-size=1920,1080");
+                    ChromeOptions headlessOptions = new ChromeOptions();
+                    headlessOptions.addArguments("--headless=new");
+                    headlessOptions.addArguments("--no-sandbox");
+                    headlessOptions.addArguments("--disable-dev-shm-usage");
+                    headlessOptions.addArguments("--disable-gpu");
+                    headlessOptions.addArguments("--window-size=1920,1080");
 
-                    driverPool.set(new ChromeDriver(options));
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(
-                            Duration.ofSeconds(Integer.parseInt(ConfigurationReader.getProperties("timeouts")))
-                    );
+                    driverPool.set(new ChromeDriver(headlessOptions));
                     break;
             }
         }
