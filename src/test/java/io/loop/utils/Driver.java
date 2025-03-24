@@ -39,9 +39,17 @@ public class Driver {
             String browserType = ConfigurationReader.getProperties("browser");
             switch (browserType.toLowerCase()){
                 case "chrome":
-                    driverPool.set(new ChromeDriver());
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
+                    chromeOptions.addArguments("--disable-gpu");
+                    chromeOptions.addArguments("--window-size=1920,1080");
+
+                    driverPool.set(new ChromeDriver(chromeOptions));
                     driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
+                    driverPool.get().manage().timeouts().implicitlyWait(
+                            Duration.ofSeconds(Integer.parseInt(ConfigurationReader.getProperties("timeouts")))
+                    );
                     break;
 
                 case "firefox":
@@ -58,10 +66,17 @@ public class Driver {
 
                 case "headless":
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--headless");
+                    options.addArguments("--headless=new");               // Modern headless mode for Chrome 109+
+                    options.addArguments("--no-sandbox");                 // Critical for EC2/root user
+                    options.addArguments("--disable-dev-shm-usage");      // Helps prevent memory issues in Docker/VMs
+                    options.addArguments("--disable-gpu");                // Optional but helps stability
+                    options.addArguments("--window-size=1920,1080");      // Good for consistent rendering
+
                     driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
+                    driverPool.get().manage().timeouts().implicitlyWait(
+                            Duration.ofSeconds(Integer.parseInt(ConfigurationReader.getProperties("timeouts")))
+                    );
                     break;
             }
         }
