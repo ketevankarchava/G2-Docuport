@@ -23,6 +23,30 @@ public class UserPage extends BasePage {
     @FindBy (xpath = "//span[.=' Search ']")
     public WebElement searchFilterButton;
 
+    @FindBy (xpath = "(//span[.='Search'])[1]")
+    public WebElement firstSearchButton;
+
+    @FindBy(xpath = "//span[.=' Search ']")
+    public WebElement secondSearchButton;
+
+    @FindBy (xpath = "//label[.='First name']//following-sibling::input")
+    public WebElement firstNameBox;
+
+    @FindBy (xpath = "//label[.='Last name']//following-sibling::input")
+    public WebElement lastNameBox;
+
+    @FindBy (xpath = "//label[.='Email address']//following-sibling::input")
+    public WebElement emailAddressBox;
+
+    @FindBy(xpath = "//td[.='John Smith']")
+    public WebElement userValidation;
+
+    @FindBy(xpath = "//label[.='Phone number']//following-sibling::input")
+    public WebElement PhoneNumberBox;
+
+    @FindBy(xpath = "//span[@class='ml-2']")
+    public WebElement resultFullName;
+
     public void clickRadioButton (String radioButtonNames) {
         for (WebElement eachRadioButton : radioButtons) {
             if (eachRadioButton.getText().equals(radioButtonNames)) {

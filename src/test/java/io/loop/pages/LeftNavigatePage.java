@@ -24,6 +24,10 @@ public class LeftNavigatePage {
     @FindBy(xpath = "//span[contains(text(),'Received')]")
     public WebElement receivedDocsButton;
 
+    @FindBy(xpath = "//span[contains(text(),'Users')]")
+    public WebElement usersButton;
+
+
     @FindBy(xpath = "//span[contains(text(),'My uploads')]")
     public WebElement myUploads;
 
