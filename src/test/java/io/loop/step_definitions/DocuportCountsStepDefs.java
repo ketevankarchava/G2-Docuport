@@ -8,7 +8,10 @@ import io.loop.pages.*;
 import io.loop.utils.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,41 +32,55 @@ public class DocuportCountsStepDefs {
     @Given("the {string} on the home page")
     public void the_on_the_home_page(String string) {
         Driver.getDriver().get(ConfigurationReader.getProperties("docuportUiUrl"));
-        //BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.EXTRA_LARGE);
+
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
         loginPage.passwordInput.sendKeys(DocuportConstants.PASSWORD);
-        loginPage.loginButton.click();
 
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(loginPage.loginButton)).click();
+
+        wait.until(ExpectedConditions.visibilityOf(homePage.clients));
+        LOG.info("Logged in and home page loaded.");
     }
+
 
     @Given("the user navigates to {string} on the {string} bar")
     public void the_user_navigates_to_page(String button, String navigationBar) {
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
         switch (button.toLowerCase().trim()) {
             case "clients":
-                homePage.clients.click();
+                wait.until(ExpectedConditions.elementToBeClickable(homePage.clients)).click();
+                LOG.info("Clicked on Clients button");
                 break;
-            case "users":
-                homePage.users.click();
-                break;
-            default: throw new IllegalArgumentException("not a valid button");
-        }
 
+            case "users":
+                wait.until(ExpectedConditions.elementToBeClickable(homePage.users)).click();
+                LOG.info("Clicked on Users button");
+                break;
+
+            default:
+                throw new IllegalArgumentException("Not a valid button: " + button);
+        }
     }
 
     @When("the user gets total user count")
     public void the_user_gets_total_user_count() {
-        BrowserUtils.justWait(3000);
-//        System.out.println(clientsPage.pagination.getText());
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(clientsPage.pagination));
+
         returnPagination = clientsPage.pagination.getText();
         String[] parts = returnPagination.split(" ");
         if (parts.length >= 3) {
             uiUserCount = parts[2];
+            LOG.info("UI user count is: " + uiUserCount);
         } else {
-            throw new RuntimeException("pagination " + returnPagination);
+            throw new RuntimeException("Pagination text not as expected: " + returnPagination);
         }
-
-
     }
+
+
     @And("the user clicks the search button")
     public void theUserClicksTheSearchButton() {
         userPage.searchButton.click();
@@ -108,13 +125,17 @@ public class DocuportCountsStepDefs {
 
     @Then("user validate left navigate items")
     public void user_validate_left_navigate_items(List<String> expectedLeftNav) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElements(leftNavigatePage.actualLeftNav));
+
+
         List<String> actualLeftNav = new ArrayList<>();
         for (int i = 0; i < leftNavigatePage.actualLeftNav.size(); i++) {
             actualLeftNav.add(leftNavigatePage.actualLeftNav.get(i).getText());
         }
 
-        assertEquals("Actual DOES NOT match expected",expectedLeftNav, actualLeftNav);
-
+        assertEquals("Actual DOES NOT match expected", expectedLeftNav, actualLeftNav);
     }
+
 
 }

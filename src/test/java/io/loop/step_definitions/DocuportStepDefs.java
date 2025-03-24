@@ -13,6 +13,10 @@ import io.loop.utils.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
@@ -62,11 +66,17 @@ public class DocuportStepDefs {
 
     @When("the user clicks the Logout button")
     public void the_user_clicks_the_logout_button() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.elementToBeClickable(logoutPage.batch1Group1button));
         logoutPage.batch1Group1button.click();
         LOG.info("user clicks batch1group1 button");
+
+        wait.until(ExpectedConditions.elementToBeClickable(logoutPage.logoutButton));
         logoutPage.logoutButton.click();
         LOG.info("user clicks logout button");
     }
+
 
     @Then("the user should be redirected to the login page")
     public void the_user_should_be_redirected_to_the_login_page() {
