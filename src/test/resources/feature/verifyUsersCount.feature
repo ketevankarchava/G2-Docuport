@@ -1,4 +1,4 @@
-Feature: As a data consumer, I want UI user account to be in DB.
+Feature: Docuport Smoke Test Feature
 
   @SmokeTest
   Scenario: verify UI total account for users matches the DB count
