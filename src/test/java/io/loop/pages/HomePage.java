@@ -17,4 +17,6 @@ public class HomePage {
     public WebElement clients;
     @FindBy(xpath = "//span[contains(text(),'Users')]")
     public WebElement users;
+    @FindBy(xpath = "//span[contains(text(),'My uploads')]")
+    public WebElement myUploads;
 }

@@ -60,6 +60,11 @@ public class DocuportCountsStepDefs {
                 LOG.info("Clicked on Users button");
                 break;
 
+            case "my uploads":
+                wait.until(ExpectedConditions.elementToBeClickable(homePage.myUploads)).click();
+                LOG.info("Clicked on My uploads button");
+                break;
+
             default:
                 throw new IllegalArgumentException("Not a valid button: " + button);
         }
