@@ -1,2 +1,3 @@
-24.03.2025 17:29:04 INFO  DocuportCountsStepDefs:125 - returned from the DB: 1434 returned from the UI: 1434
-24.03.2025 17:29:04 INFO  Hook:32 - ....................END AUTOMATION...............LOOPCAMP
+24.03.2025 17:44:20 INFO  DocuportCountsStepDefs:82 - UI user count is: 1434
+24.03.2025 17:44:21 INFO  DocuportCountsStepDefs:125 - returned from the DB: 1434 returned from the UI: 1434
+24.03.2025 17:44:21 INFO  Hook:32 - ....................END AUTOMATION...............LOOPCAMP
